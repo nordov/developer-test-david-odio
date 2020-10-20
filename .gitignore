@@ -1,0 +1,17 @@
+*.idea
+.phpstorm.meta.php
+.env*
+!.env.dev
+!.env.local
+!.env.example
+!.env.production
+!.gitignore
+.DS_Store
+/public/storage
+/storage/*.key
+/vendor
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
