@@ -41,4 +41,64 @@ Don't be afraid to get creative and have some fun!
 
 ## Installation instructions
 
-(add your instructions here)
+- Pull loan-app-feature branch
+- Run composer install to get dependencies
+- Database file database,sqlite is included with some records on it so migration should not be necessary, but you can reset the DB if you like
+- Run PHP server (php artisan serve)
+- Use Postman or Insomnia to try the following API routes:
+  - GET     /api/loan-application:      Displays all loan applications
+  - GET     /api/loan-application/{id}: Displays detail of loan application referenced by id. Returns 404 if not found
+  - POST    /api/loan-application:      Records new loan application. All it requires is a loan amount to save record but if not all information is provided it will return a notice listing missing info.
+  - PUT     /api/loan-application/{id}  Updates only information regarding loan application such as amount and status. 
+  - DELETE  /api/loan-application/{id}  Deletes record refered by id, returns 404 if not found
+
+The following JSON object can be used to POST API:
+
+{
+	"loan_application_amount":36000.00,
+	"borrowers": [
+		{
+			"fname":"Tony",
+			"lname":"Stark",
+			"employment" : [
+				{
+					"employeer_name":"Stark Industries",
+					"annual_income":65000.00
+				},
+				{
+					"employeer_name":"Avengers",
+					"annual_income":15000.00
+				}			
+			],
+			"bank_accounts":[
+				{
+					"bank_name":"Wells Fargo",
+					"account_number":"12345678",
+					"balance":27000.00
+				}				
+			]
+		},
+		{
+			"fname":"Bruce",
+			"lname":"Banner",
+			"employment" : [
+				{
+					"employeer_name":"Avengers",
+					"annual_income":35000.00
+				}		
+			],
+			"bank_accounts":[
+				{
+					"bank_name":"Wells Fargo",
+					"account_number":"12345678",
+					"balance":27000.00
+				},
+				{
+					"bank_name":"Union Bank",
+					"account_number":"12345678",
+					"balance":27000.00
+				}					
+			]
+		}		
+	]
+}
